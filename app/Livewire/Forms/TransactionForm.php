@@ -23,7 +23,7 @@ class TransactionForm extends Form
     #[Rule('required|int')]
     public $category_id = '';
 
-    #[Rule('required|numeric')]
+    #[Rule('required|numeric|min:0|max:9999999999999.99')]
     public $amount = '';
 
     #[Rule('nullable')]

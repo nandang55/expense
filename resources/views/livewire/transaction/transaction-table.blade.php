@@ -128,6 +128,12 @@
         </div>
 
         <div class="col-md-3">
+            <livewire:widgets.category-total-widget :category-id="$selected_category_id" :key="'category-total-' . ($selected_category_id ?? 'none')"/>
+
+            @if($selected_category_id)
+                <hr class="my-3">
+            @endif
+
             <livewire:widgets.income-expense-widget type="today"/>
 
             <livewire:widgets.income-expense-widget type="current_week"/>

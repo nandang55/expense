@@ -14,7 +14,18 @@ class CreateTransaction extends Component
     public function render()
     {
         $this->form->date = date('Y-m-d');
-        $this->form->category_id = 1;
+        
+        // Set default category to first available category
+        if (empty($this->form->category_id)) {
+            $firstCategory = Category::first();
+            $this->form->category_id = $firstCategory ? $firstCategory->id : null;
+        }
+        
+        // Set default account to first available account
+        if (empty($this->form->account_id)) {
+            $firstAccount = Account::first();
+            $this->form->account_id = $firstAccount ? $firstAccount->id : null;
+        }
 
         return view('livewire.transaction.create-transaction', [
             'categories' => Category::all(),

@@ -12,6 +12,7 @@ class Transaction extends Model
 
     protected $casts = [
         'date' => 'date',
+        'amount' => 'decimal:2',
     ];
 
     public function category(): BelongsTo

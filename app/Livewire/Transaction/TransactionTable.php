@@ -33,6 +33,7 @@ class TransactionTable extends Component
             'current_year_transactions' => Transaction::whereYear('date', date('Y'))->sum('amount'),
             'total_transactions' => Transaction::sum('amount'),
             'categories' => Category::when(! empty($this->type), fn($q) => $q->where('type', $this->type))->get(),
+            'selected_category_id' => $this->category_id,
         ]);
     }
 
@@ -57,6 +58,10 @@ class TransactionTable extends Component
 
         if ($property === 'type') {
             $this->reset('category_id');
+        }
+
+        if ($property === 'category_id') {
+            $this->dispatch('categoryChanged', $this->category_id);
         }
     }
 
