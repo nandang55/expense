@@ -1,7 +1,6 @@
-<div>
+<div class="row">
     <x-layouts.breadcrumb />
-    <div class="row">
-        <div class="col-12 mb-4">
+    <div class="col-12 mb-4">
             <div class="card border-0 shadow components-section">
                 <div class="card-header bg-gray-800 text-white p-3">
                     <span class="h4">Edit Member</span>

@@ -45,7 +45,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/account/create', CreateAccount::class)->name('account.create');
     Route::get('/account/{account}/edit', EditAccount::class)->name('account.edit');
 
-    Route::get('/member', MemberTable::class)->name('member');
+    Route::get('/member', MemberTable::class)->name('member.index');
     Route::get('/member/create', CreateMember::class)->name('member.create');
     Route::get('/member/{member}/edit', EditMember::class)->name('member.edit');
 

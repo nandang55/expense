@@ -107,7 +107,7 @@
             </li>
 
             <li @class(['nav-item','active' => request()->routeIs('member')])>
-                <a href="{{ route('member') }}" class="nav-link" wire:navigate>
+                <a href="{{ route('member.index') }}" class="nav-link" wire:navigate>
                     <span class="sidebar-icon"><i class="fa fa-users"></i></span>
                     <span class="sidebar-text">Members</span>
                 </a>
