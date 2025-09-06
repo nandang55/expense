@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Transaction extends Model
 {
-    protected $fillable = ['date', 'account_id', 'category_id', 'amount', 'description'];
+    protected $fillable = ['date', 'account_id', 'category_id', 'member_id', 'amount', 'description'];
 
     protected $casts = [
         'date' => 'date',
@@ -23,6 +23,11 @@ class Transaction extends Model
     public function account(): BelongsTo
     {
         return $this->belongsTo(Account::class);
+    }
+
+    public function member(): BelongsTo
+    {
+        return $this->belongsTo(Member::class);
     }
 
     public function scopeIncome(Builder $query): Builder

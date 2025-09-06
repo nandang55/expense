@@ -23,6 +23,9 @@ class TransactionForm extends Form
     #[Rule('required|int')]
     public $category_id = '';
 
+    #[Rule('nullable|int')]
+    public $member_id = '';
+
     #[Rule('required|numeric|min:0|max:9999999999999.99')]
     public $amount = '';
 
@@ -43,6 +46,7 @@ class TransactionForm extends Form
         $this->date = $transaction->date->format('Y-m-d');
         $this->account_id = $transaction->account_id;
         $this->category_id = $transaction->category_id;
+        $this->member_id = $transaction->member_id;
         $this->amount = $transaction->amount;
         $this->description = $transaction->description;
     }

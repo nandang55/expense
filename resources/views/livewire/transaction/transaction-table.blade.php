@@ -75,6 +75,7 @@
                             <th>Date</th>
                             <th>Account</th>
                             <th>Category</th>
+                            <th>Member</th>
                             <th>Type</th>
                             <th>Amount</th>
                             <th>Description</th>
@@ -88,6 +89,13 @@
                                 <td>{{ $transaction->date->format('d-m-Y') }}</td>
                                 <td>{{ $transaction->account->name }}</td>
                                 <td>{{ $transaction->category->name }}</td>
+                                <td>
+                                    @if($transaction->member)
+                                        <span class="badge bg-info">{{ $transaction->member->name }}</span>
+                                    @else
+                                        <span class="text-muted">-</span>
+                                    @endif
+                                </td>
                                 <td>
                             <span
                                 @class([

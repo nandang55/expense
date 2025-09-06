@@ -5,6 +5,7 @@ namespace App\Livewire\Transaction;
 use App\Livewire\Forms\TransactionForm;
 use App\Models\Account;
 use App\Models\Category;
+use App\Models\Member;
 use Livewire\Component;
 
 class CreateTransaction extends Component
@@ -30,6 +31,7 @@ class CreateTransaction extends Component
         return view('livewire.transaction.create-transaction', [
             'categories' => Category::all(),
             'accounts' => Account::all(),
+            'members' => Member::active()->get(),
         ]);
     }
 
