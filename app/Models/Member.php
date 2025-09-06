@@ -29,6 +29,7 @@ class Member extends Model
         'education',
         'notes',
         'is_active',
+        'updated_by',
     ];
 
     protected $casts = [

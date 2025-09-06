@@ -108,6 +108,7 @@ class EditMember extends Component
             'education' => $this->education,
             'notes' => $this->notes,
             'is_active' => $this->is_active,
+            'updated_by' => auth()->user()->name,
         ]);
 
         session()->flash('message', 'Member updated successfully.');

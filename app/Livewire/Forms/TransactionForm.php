@@ -32,6 +32,8 @@ class TransactionForm extends Form
     #[Rule('nullable')]
     public $description = '';
 
+    public $updated_by = '';
+
     public function store()
     {
         $this->validate();
@@ -49,6 +51,7 @@ class TransactionForm extends Form
         $this->member_id = $transaction->member_id;
         $this->amount = $transaction->amount;
         $this->description = $transaction->description;
+        $this->updated_by = $transaction->updated_by;
     }
 
     public function update()

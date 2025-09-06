@@ -42,6 +42,7 @@
                     <th>Phone</th>
                     <th>Address</th>
                     <th>Status</th>
+                    <th>Updated By</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -60,6 +61,13 @@
                             </span>
                         </td>
                         <td>
+                            @if($member->updated_by)
+                                <span class="badge bg-info">{{ $member->updated_by }}</span>
+                            @else
+                                <span class="text-muted">-</span>
+                            @endif
+                        </td>
+                        <td>
                             <a href="{{ route('member.edit', $member->id) }}" class="btn btn-sm btn-primary" wire:navigate>
                                 <i class="fa fa-edit"></i>
                             </a>
@@ -70,7 +78,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td class="text-danger text-center" colspan="8">No members found</td>
+                        <td class="text-danger text-center" colspan="9">No members found</td>
                     </tr>
                 @endforelse
             </tbody>

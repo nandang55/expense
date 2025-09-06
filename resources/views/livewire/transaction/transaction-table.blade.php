@@ -79,6 +79,7 @@
                             <th>Type</th>
                             <th>Amount</th>
                             <th>Description</th>
+                            <th>Updated By</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -107,6 +108,13 @@
                                 </td>
                                 <td>{{ number_format($transaction->amount) }}</td>
                                 <td>{{ $transaction->description }}</td>
+                                <td>
+                                    @if($transaction->updated_by)
+                                        <span class="badge bg-info">{{ $transaction->updated_by }}</span>
+                                    @else
+                                        <span class="text-muted">-</span>
+                                    @endif
+                                </td>
                                 <td>
                                     <a
                                             href="{{ route('transaction.edit', $transaction->id) }}"

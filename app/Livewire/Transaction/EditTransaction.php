@@ -20,6 +20,7 @@ class EditTransaction extends Component
 
     public function update()
     {
+        $this->form->updated_by = auth()->user()->name;
         $this->form->update();
 
         return $this->redirect(TransactionTable::class, navigate: true);

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Transaction extends Model
 {
-    protected $fillable = ['date', 'account_id', 'category_id', 'member_id', 'amount', 'description'];
+    protected $fillable = ['date', 'account_id', 'category_id', 'member_id', 'amount', 'description', 'updated_by'];
 
     protected $casts = [
         'date' => 'date',

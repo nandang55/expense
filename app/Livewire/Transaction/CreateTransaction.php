@@ -37,6 +37,7 @@ class CreateTransaction extends Component
 
     public function save()
     {
+        $this->form->updated_by = auth()->user()->name;
         $this->form->store();
 
         return $this->redirect(TransactionTable::class, navigate: true);
