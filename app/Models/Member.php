@@ -42,6 +42,11 @@ class Member extends Model
         return $this->hasMany(Transaction::class);
     }
 
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
+
     public function getFullAddressAttribute()
     {
         $address = $this->address;

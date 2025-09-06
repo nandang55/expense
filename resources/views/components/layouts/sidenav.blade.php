@@ -113,6 +113,13 @@
                 </a>
             </li>
 
+            <li @class(['nav-item','active' => request()->routeIs('user')])>
+                <a href="{{ route('user.index') }}" class="nav-link" wire:navigate>
+                    <span class="sidebar-icon"><i class="fa fa-user-cog"></i></span>
+                    <span class="sidebar-text">Users</span>
+                </a>
+            </li>
+
             <li class="nav-item">
                 <span
                         class="nav-link d-flex justify-content-between align-items-center collapsed"

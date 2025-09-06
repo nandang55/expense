@@ -10,6 +10,9 @@ use App\Livewire\Dashboard;
 use App\Livewire\Member\CreateMember;
 use App\Livewire\Member\EditMember;
 use App\Livewire\Member\MemberTable;
+use App\Livewire\User\CreateUser;
+use App\Livewire\User\EditUser;
+use App\Livewire\User\UserTable;
 use App\Livewire\Reports\Calendar;
 use App\Livewire\Transaction\CreateTransaction;
 use App\Livewire\Transaction\EditTransaction;
@@ -48,6 +51,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/member', MemberTable::class)->name('member.index');
     Route::get('/member/create', CreateMember::class)->name('member.create');
     Route::get('/member/{member}/edit', EditMember::class)->name('member.edit');
+
+    Route::get('/user', UserTable::class)->name('user.index');
+    Route::get('/user/create', CreateUser::class)->name('user.create');
+    Route::get('/user/{user}/edit', EditUser::class)->name('user.edit');
 
     /*
      * Reports route
