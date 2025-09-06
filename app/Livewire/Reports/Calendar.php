@@ -9,7 +9,9 @@ class Calendar extends Component
 {
     public function render()
     {
-        $transactions = Transaction::whereMonth('date', date('m'))->get();
+        $transactions = Transaction::with(['category', 'account', 'member'])
+            ->whereMonth('date', date('m'))
+            ->get();
         $transactions_data = [];
         foreach ($transactions as $transaction) {
             $transactions_data[] = [
@@ -22,6 +24,8 @@ class Calendar extends Component
                     'category' => $transaction->category->name,
                     'amount' => number_format($transaction->amount),
                     'description' => $transaction->description,
+                    'member' => $transaction->member ? $transaction->member->name : '-',
+                    'member_nik' => $transaction->member ? $transaction->member->nik : '-',
                 ]
             ];
         }

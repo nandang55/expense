@@ -36,6 +36,10 @@
                             <th>Description</th>
                             <td id="description"></td>
                         </tr>
+                        <tr>
+                            <th>Member</th>
+                            <td id="member"></td>
+                        </tr>
                     </table>
                 </div>
                 <div class="modal-footer">
@@ -61,6 +65,16 @@
                 $('#category').text(info.event.extendedProps.category)
                 $('#amount').text(info.event.extendedProps.amount)
                 $('#description').text(info.event.extendedProps.description)
+                
+                // Display member information
+                var memberInfo = info.event.extendedProps.member;
+                if (memberInfo && memberInfo !== '-') {
+                    var memberNIK = info.event.extendedProps.member_nik;
+                    $('#member').html('<span class="badge bg-info">' + memberInfo + '</span><br><small class="text-muted">NIK: ' + memberNIK + '</small>');
+                } else {
+                    $('#member').text('-');
+                }
+                
                 $('#modalNotification').modal('show')
             },
 
