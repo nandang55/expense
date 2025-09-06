@@ -135,7 +135,7 @@
                 <div class="multi-level collapse" role="list" id="submenu-app" aria-expanded="false" style="">
                     <ul class="flex-column nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#" wire:navigate>
+                            <a class="nav-link" href="{{ route('account-ledger') }}" wire:navigate>
                                 <span class="sidebar-text">Account Ledger</span>
                             </a>
                         </li>

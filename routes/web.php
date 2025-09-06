@@ -13,6 +13,7 @@ use App\Livewire\Member\MemberTable;
 use App\Livewire\User\CreateUser;
 use App\Livewire\User\EditUser;
 use App\Livewire\User\UserTable;
+use App\Livewire\Reports\AccountLedger;
 use App\Livewire\Reports\Calendar;
 use App\Livewire\Transaction\CreateTransaction;
 use App\Livewire\Transaction\EditTransaction;
@@ -59,5 +60,6 @@ Route::middleware(['auth'])->group(function () {
     /*
      * Reports route
      */
+    Route::get('/account-ledger', AccountLedger::class)->name('account-ledger');
     Route::get('/calendar-view', Calendar::class)->name('calendar-view');
 });
