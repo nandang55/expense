@@ -38,7 +38,10 @@ class TransactionForm extends Form
     {
         $this->validate();
 
-        Transaction::create($this->except('id'));
+        $data = $this->except('id');
+        $data['member_id'] = $this->member_id ?: null;
+
+        Transaction::create($data);
     }
 
     public function setTransaction($transaction)
@@ -58,6 +61,9 @@ class TransactionForm extends Form
     {
         $this->validate();
 
-        $this->transaction->update($this->all());
+        $data = $this->all();
+        $data['member_id'] = $this->member_id ?: null;
+
+        $this->transaction->update($data);
     }
 }
