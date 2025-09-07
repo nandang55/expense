@@ -85,41 +85,52 @@
                 </a>
             </li>
 
+            @can('transactions.view')
             <li @class(['nav-item','active' => request()->routeIs('transaction')])>
                 <a href="{{ route('transaction') }}" class="nav-link" wire:navigate>
                     <span class="sidebar-icon"><i class="fas fa-money-bill-wave"></i></span>
                     <span class="sidebar-text">Transactions</span>
                 </a>
             </li>
+            @endcan
 
+            @can('categories.view')
             <li @class(['nav-item','active' => request()->routeIs('category')])>
                 <a href="{{ route('category') }}" class="nav-link" wire:navigate>
                     <span class="sidebar-icon"><i class="fa fa-list"></i></span>
                     <span class="sidebar-text">Categories</span>
                 </a>
             </li>
+            @endcan
 
+            @can('accounts.view')
             <li @class(['nav-item','active' => request()->routeIs('account')])>
                 <a href="{{ route('account') }}" class="nav-link" wire:navigate>
                     <span class="sidebar-icon"><i class="fa fa-calculator"></i></span>
                     <span class="sidebar-text">Accounts</span>
                 </a>
             </li>
+            @endcan
 
+            @can('members.view')
             <li @class(['nav-item','active' => request()->routeIs('member')])>
                 <a href="{{ route('member.index') }}" class="nav-link" wire:navigate>
                     <span class="sidebar-icon"><i class="fa fa-users"></i></span>
                     <span class="sidebar-text">Members</span>
                 </a>
             </li>
+            @endcan
 
+            @can('users.view')
             <li @class(['nav-item','active' => request()->routeIs('user')])>
                 <a href="{{ route('user.index') }}" class="nav-link" wire:navigate>
                     <span class="sidebar-icon"><i class="fa fa-user-cog"></i></span>
                     <span class="sidebar-text">Users</span>
                 </a>
             </li>
+            @endcan
 
+            @canany(['reports.account-ledger', 'reports.calendar-view'])
             <li class="nav-item">
                 <span
                         class="nav-link d-flex justify-content-between align-items-center collapsed"
@@ -134,19 +145,24 @@
                 </span>
                 <div class="multi-level collapse" role="list" id="submenu-app" aria-expanded="false" style="">
                     <ul class="flex-column nav">
+                        @can('reports.account-ledger')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('account-ledger') }}" wire:navigate>
                                 <span class="sidebar-text">Account Ledger</span>
                             </a>
                         </li>
+                        @endcan
+                        @can('reports.calendar-view')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('calendar-view') }}" wire:navigate>
                                 <span class="sidebar-text">Calendar View</span>
                             </a>
                         </li>
+                        @endcan
                     </ul>
                 </div>
             </li>
+            @endcanany
         </ul>
     </div>
 </nav>

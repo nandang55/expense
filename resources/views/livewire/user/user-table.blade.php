@@ -3,10 +3,12 @@
         <x-layouts.breadcrumb heading="Users" sub-heading="Manage user accounts"/>
 
         <div class="btn-toolbar mb-2 mb-md-0">
+            @can('users.create')
             <a href="{{ route('user.create') }}" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center" wire:navigate>
                 <i class="fa fa-plus me-1"></i>
                 Add New User
             </a>
+            @endcan
         </div>
     </div>
 
@@ -39,6 +41,8 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Member</th>
+                    <th>Role</th>
+                    <th>Permissions</th>
                     <th>Created At</th>
                     <th>Action</th>
                 </tr>
@@ -58,19 +62,35 @@
                                 <span class="text-muted">-</span>
                             @endif
                         </td>
+                        <td>
+                            @if($user->roles->count() > 0)
+                                @foreach($user->roles as $role)
+                                    <span class="badge bg-primary">{{ $role->name }}</span>
+                                @endforeach
+                            @else
+                                <span class="text-muted">No Role</span>
+                            @endif
+                        </td>
+                        <td>
+                            <span class="badge bg-info">{{ $user->permissions->count() }} permissions</span>
+                        </td>
                         <td>{{ $user->created_at->format('d-m-Y H:i') }}</td>
                         <td>
+                            @can('users.edit')
                             <a href="{{ route('user.edit', $user->id) }}" class="btn btn-sm btn-primary" wire:navigate>
                                 <i class="fa fa-edit"></i>
                             </a>
+                            @endcan
+                            @can('users.delete')
                             <button class="btn btn-sm btn-danger" wire:click="setDeleteId({{ $user->id }})" data-bs-toggle="modal" data-bs-target="#deleteModal">
                                 <i class="fa fa-trash"></i>
                             </button>
+                            @endcan
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td class="text-danger text-center" colspan="6">No users found</td>
+                        <td class="text-danger text-center" colspan="8">No users found</td>
                     </tr>
                 @endforelse
             </tbody>

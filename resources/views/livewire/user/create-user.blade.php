@@ -50,7 +50,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-6 mb-3" wire:ignore>
                             <label for="member_id" class="form-label">Link to Member (Optional)</label>
                             <select class="form-control select2-member" wire:model="member_id" id="member_id">
                                 <option value="">Select Member (Optional)</option>
@@ -61,6 +61,16 @@
                                 @endforeach
                             </select>
                             @error('member_id') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="role" class="form-label">Role <span class="text-danger">*</span></label>
+                            <select class="form-control" wire:model="role" id="role">
+                                <option value="">Select Role</option>
+                                @foreach($roles as $role)
+                                    <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('role') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
                     </div>
 

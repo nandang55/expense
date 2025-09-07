@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Member;
 use Livewire\Component;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class EditUser extends Component
 {
@@ -16,12 +17,14 @@ class EditUser extends Component
     public $password = '';
     public $password_confirmation = '';
     public $member_id = '';
+    public $role = '';
 
     protected $rules = [
         'name' => 'required|string|max:255',
         'email' => 'required|string|email|max:255',
         'password' => 'nullable|string|min:8|confirmed',
         'member_id' => 'nullable|exists:members,id',
+        'role' => 'required|exists:roles,name',
     ];
 
     public function mount(User $user)
@@ -30,6 +33,7 @@ class EditUser extends Component
         $this->name = $user->name;
         $this->email = $user->email;
         $this->member_id = $user->member_id;
+        $this->role = $user->roles->first()?->name ?? '';
     }
 
     public function update()
@@ -49,6 +53,11 @@ class EditUser extends Component
 
         $this->user->update($updateData);
 
+        // Update user role
+        if ($this->role) {
+            $this->user->syncRoles([$this->role]);
+        }
+
         session()->flash('message', 'User updated successfully.');
         
         return $this->redirect(UserTable::class, navigate: true);
@@ -58,6 +67,7 @@ class EditUser extends Component
     {
         return view('livewire.user.edit-user', [
             'members' => Member::active()->get(),
+            'roles' => Role::all(),
         ]);
     }
 }

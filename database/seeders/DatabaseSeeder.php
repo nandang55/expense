@@ -19,6 +19,9 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@admin.com',
         ]);
 
+        // Always run role and permission seeder
+        $this->call(RolePermissionSeeder::class);
+
         if (\App::environment('local')) {
             $this->call(DemoSeeder::class);
             $this->call(MemberSeeder::class);
