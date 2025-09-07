@@ -113,9 +113,10 @@ class RolePermissionSeeder extends Seeder
             'members.view',
         ]);
 
-        // Member - Dashboard and reports only
+        // Member - Dashboard, transactions view, and reports
         $member = Role::create(['name' => 'Member']);
         $member->givePermissionTo([
+            'transactions.view',
             'reports.account-ledger',
             'reports.calendar-view',
         ]);

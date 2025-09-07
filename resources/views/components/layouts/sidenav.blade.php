@@ -4,8 +4,8 @@
         href="{{ route('home') }}">
         <img
             class="navbar-brand-dark"
-            src="{{ asset('assets/img/brand/light.svg') }}"
-            alt="Volt logo"> <img class="navbar-brand-light" src="{{ asset('assets/img/brand/dark.svg') }}" alt="Volt logo">
+            src="{{ asset('assets/img/brand/logo.png') }}"
+            alt="Expense Tracker logo"> <img class="navbar-brand-light" src="{{ asset('assets/img/brand/logo.png') }}" alt="Expense Tracker logo">
     </a>
     <div class="d-flex align-items-center">
         <button
@@ -72,7 +72,7 @@
             <li class="nav-item">
                 <a href="{{ route('home') }}" wire:navigate class="nav-link d-flex align-items-center">
                   <span class="sidebar-icon me-3">
-                    <img src="/assets/img/brand/light.svg" height="20" width="20" alt="Volt Logo">
+                    <img src="{{ asset('assets/img/brand/logo.png') }}" height="20" width="20" alt="Expense Tracker Logo">
                   </span>
                     <span class="mt-1 ms-1 sidebar-text">Expense Tracker</span>
                 </a>
